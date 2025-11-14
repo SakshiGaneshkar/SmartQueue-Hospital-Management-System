@@ -1,0 +1,185 @@
+.token-board {
+  background: linear-gradient(135deg, #e0f7fa, #f9ffff);
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  color: #003c4a;
+}
+
+.board-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #00796b;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.subtext {
+  font-size: 1.1rem;
+  color: #00695c;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.summary-section {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 1.2rem 2rem;
+  width: 220px;
+  box-shadow: 0 5px 15px rgba(0, 150, 136, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+}
+
+.summary-card h3 {
+  font-size: 1.1rem;
+  color: #00796b;
+  margin-bottom: 0.5rem;
+}
+
+.summary-card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.confirmed {
+  border-left: 6px solid #00c853;
+}
+
+.pending {
+  border-left: 6px solid #ffb300;
+}
+
+.total {
+  border-left: 6px solid #0288d1;
+}
+
+.instructions {
+  background: #ffffff;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  max-width: 700px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 150, 136, 0.1);
+}
+
+.instructions h2 {
+  color: #00796b;
+  margin-bottom: 1rem;
+}
+
+.instructions ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #004d40;
+  line-height: 1.7;
+}
+
+.token-display {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  
+}
+
+.token-list {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.token-list li {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: 0 3px 10px rgba(0, 150, 136, 0.1);
+  transition: 0.3s;
+}
+
+.token-list li:hover {
+  transform: scale(1.02);
+}
+
+.token-id {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #00acc1;
+}
+
+.token-info p {
+  margin: 4px 0;
+  position: relative;
+  padding-left: 15px;
+}
+
+/* 🔹 Add bullets before each detail line */
+.token-info p::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00796b;
+  font-weight: bold;
+}
+
+.token-info span.confirmed {
+  color: #00c853;
+  font-weight: bold;
+}
+
+.token-info span.pending {
+  color: #ffb300;
+  font-weight: bold;
+}
+
+/* 🔹 Delete button improvements */
+.delete-btn {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  align-self: flex-start;
+  margin-left: auto;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+.quote-box {
+  margin-top: 2rem;
+  background: rgba(0, 121, 107, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  max-width: 700px;
+  margin-inline: auto;
+  font-style: italic;
+  color: #004d40;
+}
+
+.empty-msg {
+  font-weight: 500;
+  color: #00796b;
+  margin-top: 1rem;
+}

@@ -1,0 +1,67 @@
+.gallery {
+  padding: 60px 50px;
+  background: #f9f9f9;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.gallery h1 {
+  font-size: 2.5rem;
+  color: #007f73;
+  margin-bottom: 10px;
+}
+
+.gallery .subtitle {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.gallery-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 127, 115, 0.3);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.gallery-info {
+  padding: 20px;
+}
+
+.gallery-info i {
+  font-size: 2rem;
+  color: #00bfa6;
+}
+
+.gallery-info h3 {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.gallery-info p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 8px;
+  line-height: 1.5;
+}
