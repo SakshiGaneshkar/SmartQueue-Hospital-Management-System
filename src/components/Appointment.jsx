@@ -5,6 +5,8 @@ function Appointment() {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
+    number:"",
+    email:"",
     department: "",
     doctor: "",
     date: "",
@@ -114,7 +116,7 @@ function Appointment() {
       age: "",
       department: "",
       doctor: "",
-      date: "",
+        date: "",
       time: "",
     });
   };
@@ -124,7 +126,7 @@ function Appointment() {
     if (!tokenData) return;
 
     const tokenContent = `
-🏥 WELLNESS HOSPITAL — Appointment Token
+🏥 SMART QUEUE HOSPITAL — Appointment Token
 
 Patient Name: ${tokenData.name}
 Age: ${tokenData.age}
@@ -193,6 +195,30 @@ Thank you for choosing Wellness Hospital 💚
                     />
                   </div>
                 </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>Mobile Number</label>
+                    <input
+                      type="text"
+                      name="number"
+                      value={formData.number}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>Email Address</label>
+                    <input
+                      type="text"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+
 
                 <div className="form-row">
                   <div className="form-group">
@@ -235,7 +261,7 @@ Thank you for choosing Wellness Hospital 💚
 
                 <div className="form-row">
                   <div className="form-group">
-                    <label>Date</label>
+                    <label> Appointment Date</label>
                     <input
                       type="date"
                       name="date"
@@ -295,6 +321,12 @@ Thank you for choosing Wellness Hospital 💚
                 </p>
                 <p>
                   <strong>Age:</strong> {tokenData.age}
+                </p>
+                <p>
+                  <strong>Mobile Number:</strong> {tokenData.number}
+                </p>
+                <p>
+                  <strong>Email Address:</strong> {tokenData.email}
                 </p>
                 <p>
                   <strong>Department:</strong> {tokenData.department}

@@ -11,6 +11,18 @@ const ViewToken = () => {
 
   // ✅ Function to delete a token
   const handleDelete = (index) => {
+    const token = tokens[index];
+
+    // Check if appointment is less than 1 hour away
+    const appointmentDateTime = new Date(`${token.date} ${token.time}`);
+    const now = new Date();
+    const diffInHours = (appointmentDateTime - now) / (1000 * 60 * 60);
+
+    if (diffInHours < 1) {
+      alert("⛔ You cannot cancel this appointment within 1 hour of its scheduled time!");
+      return;
+    }
+
     const updatedTokens = [...tokens];
     updatedTokens.splice(index, 1); // remove one token by index
     setTokens(updatedTokens);
@@ -18,9 +30,15 @@ const ViewToken = () => {
     alert("🗑 Token deleted successfully!");
   };
 
+  // Count confirmed & pending tokens based on current date/time
+  const now = new Date();
+  const confirmedTokens = tokens.filter(
+    (t) => new Date(`${t.date} ${t.time}`) <= now
+  ).length;
+  const pendingTokens = tokens.filter(
+    (t) => new Date(`${t.date} ${t.time}`) > now
+  ).length;
   const totalTokens = tokens.length;
-  const confirmedTokens = tokens.filter((t) => t.status === "Confirmed").length;
-  const pendingTokens = totalTokens - confirmedTokens;
 
   return (
     <div className="token-board">
@@ -82,10 +100,15 @@ const ViewToken = () => {
                   <p>Time: {t.time}</p>
                   <p>Doctor: {t.doctor}</p>
                   <p>Token No: {t.token}</p>
-
                   <p>
                     Status:{" "}
-                    <span className={t.status.toLowerCase()}>{t.status}</span>
+                    <span
+                      className={
+                        new Date(`${t.date} ${t.time}`) > now ? "pending" : "confirmed"
+                      }
+                    >
+                      {new Date(`${t.date} ${t.time}`) > now ? "Pending" : "Confirmed"}
+                    </span>
                   </p>
                 </div>
                 <button
