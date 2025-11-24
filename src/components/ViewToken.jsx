@@ -5,39 +5,31 @@ const ViewToken = () => {
   const [tokens, setTokens] = useState([]);
 
   useEffect(() => {
-    const storedTokens = JSON.parse(localStorage.getItem("bookedTokens")) || [];
+    const storedTokens =
+      JSON.parse(localStorage.getItem("bookedTokens")) || [];
     setTokens(storedTokens);
   }, []);
 
-  // ✅ Function to delete a token
+  // ✅ Cancel Anytime + Proper Message
   const handleDelete = (index) => {
-    const token = tokens[index];
-
-    // Check if appointment is less than 1 hour away
-    const appointmentDateTime = new Date(`${token.date} ${token.time}`);
-    const now = new Date();
-    const diffInHours = (appointmentDateTime - now) / (1000 * 60 * 60);
-
-    if (diffInHours < 1) {
-      alert("⛔ You cannot cancel this appointment within 1 hour of its scheduled time!");
-      return;
-    }
-
     const updatedTokens = [...tokens];
-    updatedTokens.splice(index, 1); // remove one token by index
+    updatedTokens.splice(index, 1);
+
     setTokens(updatedTokens);
     localStorage.setItem("bookedTokens", JSON.stringify(updatedTokens));
-    alert("🗑 Token deleted successfully!");
+
+    alert("Your appointment has been cancelled successfully.");
   };
 
-  // Count confirmed & pending tokens based on current date/time
   const now = new Date();
   const confirmedTokens = tokens.filter(
     (t) => new Date(`${t.date} ${t.time}`) <= now
   ).length;
+
   const pendingTokens = tokens.filter(
-    (t) => new Date(`${t.date} ${t.time}`) > now
+    (t) => new Date(`${t.date} ${t.time}`)> now
   ).length;
+
   const totalTokens = tokens.length;
 
   return (
@@ -52,10 +44,12 @@ const ViewToken = () => {
           <h3>✅ Confirmed Tokens</h3>
           <p>{confirmedTokens}</p>
         </div>
+
         <div className="summary-card pending">
           <h3>⏳ Pending Tokens</h3>
           <p>{pendingTokens}</p>
         </div>
+
         <div className="summary-card total">
           <h3>🎫 Total Registered</h3>
           <p>{totalTokens}</p>
@@ -85,6 +79,7 @@ const ViewToken = () => {
 
       <div className="token-display">
         <h2>📢 Active Token Registrations</h2>
+
         {tokens.length === 0 ? (
           <p className="empty-msg">
             No tokens booked yet. Book your appointment to generate a token.
@@ -94,23 +89,30 @@ const ViewToken = () => {
             {tokens.map((t, index) => (
               <li key={index}>
                 <span className="token-id"># {index + 1}</span>
+
                 <div className="token-info">
                   <strong>{t.name}</strong>
                   <p>Date: {t.date}</p>
                   <p>Time: {t.time}</p>
                   <p>Doctor: {t.doctor}</p>
                   <p>Token No: {t.token}</p>
+
                   <p>
                     Status:{" "}
                     <span
                       className={
-                        new Date(`${t.date} ${t.time}`) > now ? "pending" : "confirmed"
+                        new Date(`${t.date} ${t.time}`) > now
+                          ? "pending"
+                          : "confirmed"
                       }
                     >
-                      {new Date(`${t.date} ${t.time}`) > now ? "Pending" : "Confirmed"}
+                      {new Date(`${t.date} ${t.time}`) > now
+                        ? "Pending"
+                        : "Confirmed"}
                     </span>
                   </p>
                 </div>
+
                 <button
                   className="delete-btn"
                   onClick={() => handleDelete(index)}
